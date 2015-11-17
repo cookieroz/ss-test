@@ -1,0 +1,62 @@
+/* Set some resets */
+body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
+li, dl, dt, dd, form, a, fieldset, th, td {
+  /*need to add input later*/
+  border: 0;
+  margin: 0; 
+  outline: none;
+  padding: 0; 
+}
+
+/* General styles */
+body {
+  font-family: 'Verdana', 'Arial', sans-script;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrap {
+  margin: 2% auto;
+  width: 90%;
+}
+
+.news-list {
+  list-style: none;
+}
+
+.news-list li {
+  border-bottom: 1px solid #ccc;
+  clear: both;
+  margin: 1em 0;
+  overflow: hidden;
+  padding: 0 0 1em 0;
+}
+
+.hide {
+  display: none;
+}
+
+/* js rendered styles */
+h2 {
+  font-weight: 200;
+}
+
+.content {
+  padding: 1em 0 0 0;
+}
+
+img {
+  display: block;
+  float: left;
+  height: auto;
+  max-width: 230px;
+  padding-right: 1em;
+}
+
+h3 {
+  clear: both;
+  padding: 0.7em 0; 
+}
