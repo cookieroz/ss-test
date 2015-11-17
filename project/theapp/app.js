@@ -1,15 +1,20 @@
 var getJSON = require('./utils/get-json')
-var renderData = require('./renderer')
+var renderer = require('./renderer')
+var organizer = require('./organizer')
 
 var APP = module.exports = {
 	init: function(){
 		getData()
-			.then(function(data){ console.log('lalala', data); return data})
-			.then(renderData)
 			.then(function(data){
-				console.log('the application has started correctly', data)
+				return renderer.renderData(data.results)
 			})
-			.catch
+			.then(organizer.init)
+			.then(function(){
+				console.log('the application has started correctly')
+			})
+			.catch(function(err){
+				console.error(err)
+			})
 	}
 };
 
