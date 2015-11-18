@@ -4,7 +4,8 @@ module.exports = {
 	createTagAddItem: createTagAddItem,
 	getImage: getImage,
 	createReadMore: createReadMore,
-	createRelatedArticles: createRelatedArticles
+	createRelatedArticles: createRelatedArticles,
+  toggleClass: toggleClass
 }
 
 function renderData(results) {
@@ -24,6 +25,7 @@ function createItemElement(result) {
       div = document.createElement('div');
 
   var title = createTagAddItem('h2', result.titleNoFormatting);
+
   li.appendChild(title);
   div.appendChild(createTagAddItem('span', result.publishedDate));
   div.appendChild(getImage(result.image.url));
@@ -33,14 +35,7 @@ function createItemElement(result) {
 
   div.classList.add('hide', 'content');
 
-  title.addEventListener('click', function(ev) {
-  	if(div.classList.contains('hide')){
-  		div.classList.remove('hide');
-  	} else {
-  		div.classList.add('hide');
-  	}
-  });
-
+  toggleClass(title, div, 'hide');
   li.appendChild(div);
   return li;
 }
@@ -70,25 +65,27 @@ function createReadMore(link) {
 }
 
 function createRelatedArticles(elem, articles) {
-	if(!articles) { return }
-	elem.appendChild(createTagAddItem('h3', 'Related Stories'));
-	for(var i = 0; i < articles.length; i++) {
-		var article = articles[i];
-		elem.appendChild(createTagAddItem('h4', article.title));
-    elem.appendChild(createReadMore(article.unescapedUrl));
-	}
-}
-
-function createRelatedArticles(elem, articles) {
   if(!articles) { return }
   newDiv = document.createElement('div');
-  newDiv.appendChild(createTagAddItem('h3', 'Related Stories'));
+  var relatedTitle = createTagAddItem('h3', 'See Related Stories');
+  elem.appendChild(relatedTitle);
   for(var i = 0; i < articles.length; i++) {
     var article = articles[i];
     newDiv.appendChild(createTagAddItem('h4', article.title));
     newDiv.appendChild(createReadMore(article.unescapedUrl));
   }
-  newDiv.classList.add('related');
+  newDiv.classList.add('related', 'hide');
+  toggleClass(relatedTitle, newDiv, 'hide');
   elem.appendChild(newDiv);
+}
+
+function toggleClass(clicker, container, className) {
+  clicker.addEventListener('click', function(ev) {
+    if(container.classList.contains(className)){
+      container.classList.remove(className);
+    } else {
+      container.classList.add(className);
+    }
+  });
 }
 
