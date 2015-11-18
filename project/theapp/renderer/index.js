@@ -36,6 +36,7 @@ function createItemElement(result) {
   div.classList.add('hide', 'content');
 
   toggleClass(title, div, 'hide');
+  toggleClass(title, title, 'carot-up');
   li.appendChild(div);
   return li;
 }
@@ -76,6 +77,7 @@ function createRelatedArticles(elem, articles) {
   }
   newDiv.classList.add('related', 'hide');
   toggleClass(relatedTitle, newDiv, 'hide');
+  toggleClass(relatedTitle, relatedTitle, 'carot-up');
   elem.appendChild(newDiv);
 }
 

@@ -51,11 +51,8 @@ var Organizer = module.exports = {
 				break;
 		}
 		return results;
-	},
-
-	itemsShown: function() {
-
 	}
+	// create function later to limit number of options
 }
 
 
