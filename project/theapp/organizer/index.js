@@ -42,7 +42,7 @@ var Organizer = module.exports = {
 			case 'latest':
 				results = results.sort(function(a, b){
 					return new Date(b.publishedDate) - new Date(a.publishedDate);
-				})
+				});
 				break;
 			case 'oldest':
 				results = results.sort(function(a, b){

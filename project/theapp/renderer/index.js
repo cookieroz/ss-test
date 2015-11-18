@@ -31,7 +31,7 @@ function createItemElement(result) {
   div.appendChild(createReadMore(result.unescapedUrl));
   createRelatedArticles(div, result.relatedStories);
 
-  div.classList.add('hide');
+  div.classList.add('hide', 'content');
 
   title.addEventListener('click', function(ev) {
   	if(div.classList.contains('hide')){
@@ -39,7 +39,7 @@ function createItemElement(result) {
   	} else {
   		div.classList.add('hide');
   	}
-  })
+  });
 
   li.appendChild(div);
   return li;
@@ -77,5 +77,18 @@ function createRelatedArticles(elem, articles) {
 		elem.appendChild(createTagAddItem('h4', article.title));
     elem.appendChild(createReadMore(article.unescapedUrl));
 	}
+}
+
+function createRelatedArticles(elem, articles) {
+  if(!articles) { return }
+  newDiv = document.createElement('div');
+  newDiv.appendChild(createTagAddItem('h3', 'Related Stories'));
+  for(var i = 0; i < articles.length; i++) {
+    var article = articles[i];
+    newDiv.appendChild(createTagAddItem('h4', article.title));
+    newDiv.appendChild(createReadMore(article.unescapedUrl));
+  }
+  newDiv.classList.add('related');
+  elem.appendChild(newDiv);
 }
 
