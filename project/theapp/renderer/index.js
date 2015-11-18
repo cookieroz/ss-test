@@ -25,12 +25,13 @@ function createItemElement(result) {
       div = document.createElement('div');
 
   var title = createTagAddItem('h2', result.titleNoFormatting);
+  var aContent = createTagAddItem('p', result.content);
 
   li.appendChild(title);
   div.appendChild(createTagAddItem('span', result.publishedDate));
   div.appendChild(getImage(result.image.url));
-  div.appendChild(createTagAddItem('p', result.content));
-  div.appendChild(createReadMore(result.unescapedUrl));
+  div.appendChild(aContent);
+  aContent.appendChild(createReadMore(result.unescapedUrl));
   createRelatedArticles(div, result.relatedStories);
 
   div.classList.add('hide', 'content');
@@ -67,13 +68,14 @@ function createReadMore(link) {
 
 function createRelatedArticles(elem, articles) {
   if(!articles) { return }
-  newDiv = document.createElement('div');
+  var newDiv = document.createElement('div');
   var relatedTitle = createTagAddItem('h3', 'See Related Stories');
   elem.appendChild(relatedTitle);
   for(var i = 0; i < articles.length; i++) {
     var article = articles[i];
-    newDiv.appendChild(createTagAddItem('h4', article.title));
-    newDiv.appendChild(createReadMore(article.unescapedUrl));
+    var aTitle = createTagAddItem('h4', article.title);
+    newDiv.appendChild(aTitle);
+    aTitle.appendChild(createReadMore(article.unescapedUrl));
   }
   newDiv.classList.add('related', 'hide');
   toggleClass(relatedTitle, newDiv, 'hide');
