@@ -30,7 +30,7 @@ body {
   font-size: 16px;
 }
 
-a {
+a, a:active, a:visited {
   color: #2E74AA;
   text-decoration: none;
 }
@@ -61,6 +61,15 @@ input#filter  {
 
 input#filter:focus {
   border: solid 3px #8C98A1;
+}
+
+#sort {
+  background: #8C98A1;
+  color: #fff;
+  display: block;
+  float: right;
+  margin: 0 1em 0 0;
+  padding: 0.6em;
 }
 
 .news-list {

@@ -10,7 +10,7 @@ module.exports = {
 
 function renderData(results) {
 	var list = document.querySelector('.news-list');
-  
+
 	list.innerHTML = '';
 
 	for (i = 0; i < results.length; i++) {
@@ -29,7 +29,7 @@ function createItemElement(result) {
       aContent = createTagAddItem('p', result.content);
 
   li.appendChild(title);
-  div.appendChild(createTagAddItem('span', result.publishedDate));
+  div.appendChild(createTagAddItem('small', result.publishedDate));
   div.appendChild(getImage(result.image.url));
   div.appendChild(aContent);
   aContent.appendChild(createReadMore(result.unescapedUrl));
@@ -71,7 +71,7 @@ function createRelatedArticles(elem, articles) {
   if(!articles) { return }
 
   var newDiv = document.createElement('div'),
-      relatedTitle = createTagAddItem('h3', 'See Related Stories');
+      relatedTitle = createTagAddItem('h3', 'Related Stories');
 
   elem.appendChild(relatedTitle);
   for(var i = 0; i < articles.length; i++) {
