@@ -10,11 +10,13 @@ module.exports = {
 
 function renderData(results) {
 	var list = document.querySelector('.news-list');
+  
 	list.innerHTML = '';
 
 	for (i = 0; i < results.length; i++) {
-		var result = results[i];
-		var element = createItemElement(result);
+		var result = results[i],
+		    element = createItemElement(result);
+
 		list.appendChild(element);
 	}
 	return results;
@@ -22,10 +24,9 @@ function renderData(results) {
 
 function createItemElement(result) {
 	var li = document.createElement('li'),
-      div = document.createElement('div');
-
-  var title = createTagAddItem('h2', result.titleNoFormatting);
-  var aContent = createTagAddItem('p', result.content);
+      div = document.createElement('div'),
+      title = createTagAddItem('h2', result.titleNoFormatting),
+      aContent = createTagAddItem('p', result.content);
 
   li.appendChild(title);
   div.appendChild(createTagAddItem('span', result.publishedDate));
@@ -68,8 +69,10 @@ function createReadMore(link) {
 
 function createRelatedArticles(elem, articles) {
   if(!articles) { return }
-  var newDiv = document.createElement('div');
-  var relatedTitle = createTagAddItem('h3', 'See Related Stories');
+
+  var newDiv = document.createElement('div'),
+      relatedTitle = createTagAddItem('h3', 'See Related Stories');
+
   elem.appendChild(relatedTitle);
   for(var i = 0; i < articles.length; i++) {
     var article = articles[i];
@@ -77,6 +80,7 @@ function createRelatedArticles(elem, articles) {
     newDiv.appendChild(aTitle);
     aTitle.appendChild(createReadMore(article.unescapedUrl));
   }
+
   newDiv.classList.add('related', 'hide');
   toggleClass(relatedTitle, newDiv, 'hide');
   toggleClass(relatedTitle, relatedTitle, 'carot-up');
