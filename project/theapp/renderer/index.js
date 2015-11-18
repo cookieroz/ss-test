@@ -76,7 +76,7 @@ function createRelatedArticles(elem, articles) {
   elem.appendChild(relatedTitle);
   for(var i = 0; i < articles.length; i++) {
     var article = articles[i];
-    var aTitle = createTagAddItem('h4', article.title);
+    var aTitle = createTagAddItem('h4', article.titleNoFormatting);
     newDiv.appendChild(aTitle);
     aTitle.appendChild(createReadMore(article.unescapedUrl));
   }

@@ -12,6 +12,7 @@ var Organizer = module.exports = {
 		});
 
 		Organizer.sortLink.addEventListener('click', function(ev) {
+			ev.preventDefault();
 			// latest or oldest
 			Organizer.sortedBy = Organizer.sortedBy === 'latest'? 
 				'oldest' : 'latest';

@@ -110,6 +110,10 @@ h2:after, h3:after {
   padding: 1em 0.5em 0 0.5em;
 }
 
+.content a {
+  margin-left: 1em;
+}
+
 img {
   display: block;
   float: left;
@@ -118,11 +122,45 @@ img {
   padding-right: 1em;
 }
 
+small {
+  font-style: italic;
+}
+
+p {
+  margin-top: 0.5em;
+  line-height: 1.5em;
+}
+
 h3 {
   clear: both;
   padding: 0.7em 0; 
 }
 
 h4 {
+  font-weight: 500;
+  line-height: 1.5em;
+  margin: 0.5em;
+}
 
+@media screen and (max-width: 575px) {
+  img {
+    float: none;
+    margin-top: 0.5em auto;
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .filters {
+    overflow: hidden;
+    padding-top: 1em;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #sort {
+    display: inline-block;
+    float: none;
+    margin: 1em 0 0 0; 
+  }
 }
